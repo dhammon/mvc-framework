@@ -1,0 +1,3 @@
+.dccache
+.snyk/
+.phpunit.cache
