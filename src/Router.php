@@ -90,9 +90,9 @@ class Router
             $path = "/".$uri[1]."/".$uri[2];
         }
 
-        if(isset($this->routes[$httpMethod][$path]))
+        if(isset($this->routes[$path][$httpMethod]))
         {
-            $mappedRoute = $this->routes[$httpMethod][$path];  
+            $mappedRoute = $this->routes[$path][$httpMethod];  
         }
         else
         {
