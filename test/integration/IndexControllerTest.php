@@ -24,6 +24,24 @@ class IndexControllerTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf("\Core\Controller", $this->testObj);
     }
 
+    public function testConstruct()
+    {
+        $result = $this->reflector->getPrivateProperty($this->testObj, $this->classToTest, "service");
+        $this->assertInstanceOf("\App\Service\Index", $result);
+    }
+
+    public function testRender()
+    {
+        $entity = new \App\Entity\Index();
+        $entity->setView('default');
+
+        ob_start();
+        $this->testObj->render($entity);        
+        $result = ob_get_clean();
+
+        $this->assertEquals('1', preg_match('/hello world/', $result));
+    }
+
     public function testDefault()
     {
         ob_start();
